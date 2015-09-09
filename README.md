@@ -8,6 +8,7 @@ Vfs2 monitor is built from Apache-Commons-vfs2
 
 ## Supported File Systems
 Although Commons VFS directly supports the following file systems: https://commons.apache.org/proper/commons-vfs/filesystems.html
+
 actually Keedio's VFS2-Monitor has only been tested in the following one: 
 
 * File: file:///home/someuser/somedir
@@ -17,7 +18,7 @@ actually Keedio's VFS2-Monitor has only been tested in the following one:
 ## How To Use
 Normally a object interested in events (listener) from a directory should instance WatchablePath with:
 
-* String path to be watched.
+* String path to be watched.(example:  hdfs://somehost:8020/somedir)
 * Start time in seconds.
 * Refresh time in seconds.
 * Regexp for matching files.
