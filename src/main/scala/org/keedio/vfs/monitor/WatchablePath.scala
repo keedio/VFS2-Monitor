@@ -89,7 +89,6 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
        * @param seconds
        * @return
        */
-      //FIXME:not sure this is right because may change all Int to Long ???
       implicit def secondsToMiliseconds(seconds: Int): Long = {
             seconds * 10 ^ (-3)
       }
