@@ -1,3 +1,4 @@
+
 # use glob syntax.
 syntax: glob
 *.ser
@@ -11,6 +12,11 @@ syntax: glob
 .settings
 .classpath
 .project
+/src/test/scala/org/keedio/vfs/monitor/watchable/WatchablePathHDFSTest.scala
+/src/test/scala/org/keedio/vfs/monitor/watchable/WatchablePathFTPTest.scala
+/src/test/scala/org/keedio/vfs/monitor/filemonitor/DefaultMonitorHDFSTest.scala
+/src/test/scala/org/keedio/vfs/monitor/filemonitor/DefaultMonitorFTPTest.scala
+
 .manager
 .scala_dependencies
 
