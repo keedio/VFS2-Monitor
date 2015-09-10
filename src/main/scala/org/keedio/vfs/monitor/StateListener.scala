@@ -8,7 +8,7 @@ package org.keedio.vfs.monitor
 
 /**
  * Mix-in this trait to become a listener, implementing
- * what to do where an event ins received.
+ * what to do when an event ins received.
  */
 trait StateListener {
     def statusReceived(stateEvent: StateEvent): Unit
