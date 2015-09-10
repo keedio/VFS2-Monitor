@@ -13,5 +13,5 @@ import org.apache.commons.vfs2.FileChangeEvent
  * what to do where an event ins received.
  */
 trait StateListener {
-      def statusReceived(fileChangeEvent: FileChangeEvent): Unit
+    def statusReceived(fileChangeEvent: FileChangeEvent): Unit
 }
