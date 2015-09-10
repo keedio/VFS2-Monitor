@@ -4,7 +4,7 @@
 **Keedio's VFS2-Monitor** is a feature for monitoring changes in directories of supported file systems. When a change occurs in the observed directory a event is fired. All listeners subscribed to the event generator will be notified.
 
 ## Description
-VFS2-Monitor is built from Apache-Commons-vfs. 
+VFS2-Monitor is built from Apache-Commons-Vfs™. 
 A single action such as create, delete or modify will trigger an event.
 
 ## Supported File Systems
@@ -12,7 +12,7 @@ Although Commons VFS directly supports the following file systems:
 
 [Supported File Systems](https://commons.apache.org/proper/commons-vfs/filesystems.html)
  
-***actually Keedio's VFS2-Monitor has only been tested in the following one***: 
+**actually Keedio's VFS2-Monitor has only been tested in the following one**: 
 
 * **File**: `file:///home/someuser/somedir`
 * **HDFS**: `hdfs://somehost:someport/somedir`
