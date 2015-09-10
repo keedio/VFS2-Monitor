@@ -25,12 +25,20 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
 
     //observer for changes to a file
     private val fileListener = new FileListener {
+        override def fileDeleted(fileChangeEvent: FileChangeEvent): Unit = {
+            val eventDelete: StateEvent = new StateEvent(fileChangeEvent, State.ENTRY_DELETE)
+            fireEvent(eventDelete)
+        }
 
-        override def fileDeleted(fileChangeEvent: FileChangeEvent): Unit = fireEvent(fileChangeEvent)
+        override def fileChanged(fileChangeEvent: FileChangeEvent): Unit = {
+            val eventChanged: StateEvent = new StateEvent(fileChangeEvent, State.ENTRY_MODIFY)
+            fireEvent(eventChanged)
+        }
 
-        override def fileChanged(fileChangeEvent: FileChangeEvent): Unit = fireEvent(fileChangeEvent)
-
-        override def fileCreated(fileChangeEvent: FileChangeEvent): Unit = fireEvent(fileChangeEvent)
+        override def fileCreated(fileChangeEvent: FileChangeEvent): Unit = {
+            val eventCreate: StateEvent = new StateEvent(fileChangeEvent, State.ENTRY_CREATE)
+            fireEvent(eventCreate)
+        }
     }
 
     //Thread based polling file system monitor with a 1 second delay.
@@ -55,9 +63,10 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
      * FileChangeEvent.
      * Filtering monitored files via regex is made after and event is fired.
      */
-    def fireEvent(fileChangeEvent: FileChangeEvent): Unit = {
-        regex.findFirstIn(fileChangeEvent.getFile.getName.getBaseName).isDefined match {
-            case true => listeners foreach (_.statusReceived(fileChangeEvent))
+    def fireEvent(stateEvent: StateEvent): Unit = {
+        val fileName: String = stateEvent.getFileChangeEvent.getFile.getName.getBaseName
+        regex.findFirstIn(fileName).isDefined match {
+            case true => listeners foreach (_.statusReceived(stateEvent))
             case false => ()
         }
     }
@@ -90,7 +99,7 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
      * @return
      */
     implicit def secondsToMiliseconds(seconds: Int): Long = {
-        seconds * 10 ^ (-3)
+        seconds * 1000
     }
 
 
@@ -105,4 +114,9 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
             }
         }
     }
+
+
+    def getPathForMonitor = pathForMonitor
+    def getDefaultMonitor = defaultMonitor
+
 }
