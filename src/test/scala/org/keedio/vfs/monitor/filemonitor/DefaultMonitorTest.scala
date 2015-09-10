@@ -1,4 +1,4 @@
-package org.keedio.vfs.monitor
+package org.keedio.vfs.monitor.filemonitor
 
 import java.io.IOException
 import java.nio.file.{Files, Paths, StandardOpenOption}
