@@ -15,8 +15,7 @@ Although Commons VFS directly supports the following file systems:
 ***actually Keedio's VFS2-Monitor has only been tested in the following one***: 
 
 * **File**: `file:///home/someuser/somedir`
-* **FTP**:  `ftp://myusername:mypassword@somehost/somedir`
-* **HDFS**: `hdfs://somehost:8020/somedir`
+* **HDFS**: `hdfs://somehost:someport/somedir`
 
 ## How To Use
 Normally a object interested in events (listener) from a directory should instance WatchablePath with:
