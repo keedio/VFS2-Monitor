@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.keedio.vfs.monitor</groupId>
   <artifactId>VFS2-Monitor</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>VFS2-Monitor</name>
   <description>Keedio's VFS2-Monitor is a feature for monitoring changes in directories of supported file systems.
   </description>
