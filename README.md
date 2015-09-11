@@ -16,7 +16,7 @@ Although Commons VFS directly supports the following file systems:
 
 * **File**: `file:///home/someuser/somedir`
 * **HDFS**: `hdfs://somehost:someport/somedir`
-* **FTP**:  `ftp://myusername:mypassword@somehost/somedir
+* **FTP**:  `ftp://myusername:mypassword@somehost/somedir`
 
 ## How To Use
 Normally a object interested in events (listener) from a directory should instance WatchablePath with:
