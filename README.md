@@ -16,6 +16,7 @@ Although Commons VFS directly supports the following file systems:
 
 * **File**: `file:///home/someuser/somedir`
 * **HDFS**: `hdfs://somehost:someport/somedir`
+* **FTP**:  `ftp://myusername:mypassword@somehost/somedir
 
 ## How To Use
 Normally a object interested in events (listener) from a directory should instance WatchablePath with:
@@ -29,5 +30,12 @@ The listener will have to register himself to the watchable object and will impl
 
 The path will be checked periodically for new files or changes in its modification times.
 If the path contains subpaths, changes under subdirectories will all be watched.
+
+## Notes on supported and tested file systems ##
+
+| Scheme | Observations |
+| ------ | ------ | 
+|  ftp  |   In most cases the ftp client will be behind a FW so Passive Mode is set to true by default. Active mode is not working in actual version. Anyway, if you need need explicitly Active mode just set in source code `setPassiveMode(options, false)`.   
+
 
 * * *
