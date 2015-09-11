@@ -2,8 +2,8 @@ package org.keedio.vfs.monitor
 
 import java.util.concurrent.{Executors, ScheduledExecutorService, ScheduledFuture, TimeUnit}
 
+import org.apache.commons.vfs2._
 import org.apache.commons.vfs2.impl.DefaultFileMonitor
-import org.apache.commons.vfs2.{FileChangeEvent, FileListener, FileObject, VFS}
 
 import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex
@@ -15,12 +15,11 @@ import scala.util.matching.Regex
  * Keedio
  */
 
-class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
+class WatchablePath(uri: String, refresh: Int, start: Int, regex: Regex) {
 
-    private val fsManager = VFS.getManager
-    private val pathForMonitor: FileObject = fsManager.resolveFile(csvDir)
+    private val fileObject: FileObject = FileObjectBuilder.getFileObject(uri)
 
-    //list of susbcribers(observers) for changes in pathForMonitor
+    //list of susbcribers(observers) for changes in fileObject
     private val listeners: ListBuffer[StateListener] = new ListBuffer[StateListener]
 
     //observer for changes to a file
@@ -42,8 +41,9 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
     }
 
     //Thread based polling file system monitor with a 1 second delay.
+
     private val defaultMonitor: DefaultFileMonitor = new DefaultFileMonitor(fileListener)
-    defaultMonitor.addFile(pathForMonitor)
+    defaultMonitor.addFile(fileObject)
     defaultMonitor.setRecursive(true)
     defaultMonitor.setDelay(secondsToMiliseconds(refresh))
 
@@ -116,7 +116,8 @@ class WatchablePath(csvDir: String, refresh: Int, start: Int, regex: Regex) {
     }
 
 
-    def getPathForMonitor = pathForMonitor
+    def getPathForMonitor = fileObject
+
     def getDefaultMonitor = defaultMonitor
 
 }
