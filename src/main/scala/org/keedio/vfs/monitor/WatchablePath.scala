@@ -41,7 +41,6 @@ class WatchablePath(uri: String, refresh: Int, start: Int, regex: Regex) {
     }
 
     //Thread based polling file system monitor with a 1 second delay.
-
     private val defaultMonitor: DefaultFileMonitor = new DefaultFileMonitor(fileListener)
     defaultMonitor.addFile(fileObject)
     defaultMonitor.setRecursive(true)
