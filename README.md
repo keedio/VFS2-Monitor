@@ -35,7 +35,7 @@ If the path contains subpaths, changes under subdirectories will all be watched.
 
 | Scheme | Observations |
 | ------ | ------ | 
-|  ftp  |   In most cases the ftp client will be behind a FW so Passive Mode is set to true by default. Active mode is not working in actual version. Anyway, if you need need explicitly Active mode just set in source code `setPassiveMode(options, false)`.   
+|  ftp  |   In most cases the ftp client will be behind a FW so Passive Mode is set to true by default. Active mode is not working in actual version. Anyway, if you need explicitly Active mode just set in source code `setPassiveMode(options, false)`.   
 
 
 * * *
