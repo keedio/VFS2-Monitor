@@ -31,7 +31,7 @@ object FileObjectBuilder {
             case "ftp" => {
                 val builder = FtpFileSystemConfigBuilder.getInstance()
                 builder.setUserDirIsRoot(options, false)
-                builder.setPassiveMode(options, false) //set to true if behind firewall
+                builder.setPassiveMode(options, true) //set to true if behind firewall
                 fsManager.resolveFile(uri, options)
             }
             case _ => fsManager.resolveFile(uri)
